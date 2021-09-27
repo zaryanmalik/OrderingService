@@ -16,8 +16,8 @@ namespace OrderingService.UI.Mvc
 
             var cust2 = Customer.Create("Hanan", "Mumtaz", "Hanan@gmail.com");
             var cart1 = Cart.Create(cust2);
-            var cartItem2 = CartItem.Create(cart1, 1001, "Sun Glasses", 5.99, 3);
-            cart1.AddItem(cartItem2);
+            var cartItem2 = CartItem.Create(cart1, 1001, "Sun Glasses", 5.00, 3);
+            cart.AddItem(cartItem2);
 
             foreach (var item in cart.Products)
             {
