@@ -24,8 +24,7 @@ namespace OrderingService.UI.Mvc
                
                 Console.WriteLine($"{item.cart.customer}->{item.ProductId}->{item.ProductName}->" +
                 $"{item.ProductPrice}->{item.ProductQuantity}");
-
-                var totalcost = cart.Products.Sum(x => x.ProductQuantity * x.ProductPrice);
+                var totalcost = item.ProductQuantity * item.ProductPrice;
                 Console.WriteLine($"Total cost : {totalcost}");
 
             }
