@@ -1,12 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace OrderingService.Domian
 {
     public class Customer
     {
-        public string FirstName { get; protected set; }
-        public string LastName { get; protected set; }
-        public string Email { get; protected set; }
+        private List<Purchase> purchases = new List<Purchase>();
+        public ReadOnlyCollection<Purchase> Purchases 
+        { 
+            get 
+            { 
+                return this.purchases.AsReadOnly(); 
+            }
+        }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string Email { get; private set; }
         protected Customer(string firstName, string lastName, string email)
         {
             FirstName = firstName;
@@ -27,6 +37,13 @@ namespace OrderingService.Domian
 
             return customer;
         }
+        public Purchase Checkout(Cart cart)
+        {
+            Purchase purchase = Purchase.Create(this, cart.GetProducts);
+            this.purchases.Add(purchase);
+            return purchase;
+        }
+
         public override string ToString()
         {
             return $"{nameof(FirstName)}:{FirstName},{nameof(LastName)}:{LastName},{nameof(Email)}:{Email}";

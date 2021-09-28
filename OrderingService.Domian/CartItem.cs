@@ -4,11 +4,12 @@ namespace OrderingService.Domian
 {
     public class CartItem
     {
-        public Cart cart { get; set; }
-        public int ProductId { get; set; }
-        public string ProductName { get; set; }
-        public double ProductPrice { get; set; }
-        public int ProductQuantity { get; set; }
+        public Cart cart { get; private set; }
+        public int ProductId { get; private set; }
+        public string ProductName { get; private set; }
+        public double ProductPrice { get; private set; }
+        public int ProductQuantity { get; private set; }
+        public double TotalCost { get; private set; }
         public CartItem(Cart cart, int productId, string productName, double productPrice, int productQuantity)
         {
             this.cart = cart;
@@ -16,6 +17,7 @@ namespace OrderingService.Domian
             ProductName = productName;
             ProductPrice = productPrice;
             ProductQuantity = productQuantity;
+            TotalCost = productQuantity * productPrice;
         }
 
         public static CartItem Create(Cart cart, int productId, string productName, double productPrice, int productQuantity)
@@ -27,6 +29,10 @@ namespace OrderingService.Domian
 
             return cartItem;
 
+        }
+        public override string ToString()
+        {
+            return $"{nameof(ProductId)}:{ProductId},{nameof(ProductName)}:{ProductName},{nameof(ProductPrice)}:{ProductPrice}";
         }
 
     }

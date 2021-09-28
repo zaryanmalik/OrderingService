@@ -10,17 +10,15 @@ namespace OrderingService.UnitTest
         [Fact]
         public void CalculateTotal()
         {
-            
-            /*var cart = new Cart();
+            var cust1 = Customer.Create("Zaryan", "Malik", "bscs.f14.13gmail.com");
+            var cart = Cart.Create(cust1);
             foreach (var item in cart.Products)
             {
-                Console.WriteLine($"{item.customer}->{item.ProductId}->{item.ProductName}->" +
-                $"{item.ProductPrice}->{item.ProductQuantity}");
 
-                var totalcost = cart.Products.Sum(x => x.ProductQuantity * x.ProductPrice);
-                NUnit.Framework.Assert.AreEqual(117.97, totalcost);
-                Console.WriteLine($"Total cost : {totalcost}");
-            }*/
+                var totalcost = item.ProductQuantity * item.ProductPrice;
+                NUnit.Framework.Assert.AreEqual(17.97, totalcost);
+                
+            }
         }
 
         [Fact]
